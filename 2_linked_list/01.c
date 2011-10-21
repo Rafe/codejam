@@ -10,7 +10,7 @@ typedef struct node{
 } Node;
 
 Node* createNode(int data);
-Node* appendNode(Node* node,int data);
+int appendNode(Node* node,int data);
 int findNode(Node* node,int data);
 
 int simpleHash(int value){
@@ -24,17 +24,15 @@ Node* createNode(int data){
   return n;
 }
 
-Node* appendNode(Node* node,int data){
-  if(node == NULL) {
-    node = createNode(data);
-    printf("append node:(%d)\n",data);
-    return node;
+int appendNode(Node* node,int data){
+  if(node == NULL) { 
+    return 0;
   }  
   while(node->next != NULL){
     node = node->next;
   }
   node->next = createNode(data);
-  return node;
+  return 1;
 }
 
 int findNode(Node* node,int data){
@@ -87,7 +85,11 @@ int checkDuplicateWithHash(Node* n){
     if(findNode(table[hash],n->data)){
       return 1;
     }
-    table[hash] = appendNode(table[hash],n->data);;
+    if(table[hash] == NULL){
+      table[hash] = createNode(n->data);
+    }else{
+      appendNode(table[hash],n->data);
+    }
     n = n->next;
   }
   return 0;
