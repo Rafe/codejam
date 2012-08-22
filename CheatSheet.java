@@ -1,6 +1,15 @@
+import java.lang.Math;
+import java.util.*;
+
 public class CheatSheet{
   public static void main(String[] args){
-    
+    int[] anArray = {
+      100, 200, 300,
+      400, 500, 600,
+      700, 800, 900
+    };
+    Arrays.sort(anArray); //sort array as ascend sequence
+    Math.max(100, Math.max(200, 300)); // tri compare
   }
 
   public static void StringAPI(){
@@ -14,7 +23,7 @@ public class CheatSheet{
     a.indexOf("is");
     a.concat(c);
     b.replace("pan","pen");
-    a.split(" ")[1]; // is 
+    a.split(" ")[1]; // is
     a.equals(b);
   }
 
@@ -63,7 +72,7 @@ public class CheatSheet{
     for(String word : words){
       sentence.add(word);
     }
-    
+
     //StringBuffer / StringBuilder
     StringBuilder sentence = new StringBuilder();
     sentence.append("word");
